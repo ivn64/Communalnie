@@ -10,7 +10,7 @@ namespace Communalnie
 {
     class DataArray<T>
     {
-        private int[] Arr=new int[10];
+        private int[] Arr = new int[10];
 
         private T[] myArray;
 
@@ -58,12 +58,8 @@ namespace Communalnie
             BinaryFormatter binFormat = new BinaryFormatter();
             using (FileStream fStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
-
                 byte[] bArray = BitConverter.GetBytes(top);
-
                 fStream.Write(bArray, 0, bArray.Length);
-
-
                 for (int i = 0; i < top; i++)
                 {
                     binFormat.Serialize(fStream, myArray[i]);
@@ -78,11 +74,9 @@ namespace Communalnie
                 BinaryFormatter binFormat = new BinaryFormatter();
                 using (FileStream fStream = File.OpenRead(fileName))
                 {
-
                     byte[] bArray = new byte[sizeof(int)];
                     fStream.Read(bArray, 0, bArray.Length);
                     top = BitConverter.ToInt32(bArray, 0);
-
                     for (int i = 0; i < top; i++)
                     {
                         myArray[i] = (T)binFormat.Deserialize(fStream);

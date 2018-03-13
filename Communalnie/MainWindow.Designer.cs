@@ -33,6 +33,8 @@
             this.housesButton = new System.Windows.Forms.Button();
             this.graphButton = new System.Windows.Forms.Button();
             this.servicesButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // housesComboBox
@@ -96,12 +98,21 @@
             this.servicesButton.UseVisualStyleBackColor = false;
             this.servicesButton.Click += new System.EventHandler(this.servicesButton_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 73);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 21;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(472, 311);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.housesComboBox);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.housesButton);
@@ -111,6 +122,7 @@
             this.Text = "Коммуналка";
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.Deactivate += new System.EventHandler(this.MainWindow_Deactivate);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,6 +134,7 @@
         private System.Windows.Forms.Button housesButton;
         private System.Windows.Forms.Button graphButton;
         private System.Windows.Forms.Button servicesButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

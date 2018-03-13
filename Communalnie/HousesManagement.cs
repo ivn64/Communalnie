@@ -49,8 +49,10 @@ namespace Communalnie
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            HousesArray.AddItem(THouse);
+            //HousesArray.AddItem(THouse);
+            HousesArray.AddItem(new House());
             housesListBox.Items.Add(THouse.Name);
+            //housesListBox.Items.Add(HousesArray.GetItem.Name());
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
