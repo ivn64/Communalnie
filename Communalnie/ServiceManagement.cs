@@ -27,8 +27,8 @@ namespace Communalnie
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            DArr.AddItem(Serv);
-            servicesListBox.Items.Add(Serv.Name);
+            DArr.AddItem(new Services());
+            servicesListBox.Items.Add(DArr.GetItem(DArr.GetTop() - 1).Name);
         }
 
         private void saveButton_Click(object sender, EventArgs e)
