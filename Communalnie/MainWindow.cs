@@ -13,8 +13,8 @@ namespace Communalnie
     public partial class MainWindow : Form
     {
         private House THouse = new House();
-
         private DataArray<House> HousesArray = new DataArray<House>();
+        public string Entity { get; set; }
 
         public MainWindow()
         {
@@ -55,6 +55,22 @@ namespace Communalnie
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            if (housesComboBox.SelectedIndex >= 0)
+            {
+                CommunalTable TableEditForm = new CommunalTable(housesComboBox.SelectedItem.ToString());
+                TableEditForm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Выберите объект");
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
         {
 
         }

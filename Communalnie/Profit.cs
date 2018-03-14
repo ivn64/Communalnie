@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Communalnie
 {
     [Serializable]
-    class Summary
+    class Profit
     {
         public string Entity {get; set;}
         public int Year { get; set; }

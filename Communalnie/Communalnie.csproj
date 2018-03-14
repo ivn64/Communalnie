@@ -68,8 +68,14 @@
     <Compile Include="HousesManagement.Designer.cs">
       <DependentUpon>HousesManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfitForm.Designer.cs">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQLRequest.cs" />
-    <Compile Include="Summary.cs" />
+    <Compile Include="Profit.cs" />
     <Compile Include="TariffSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HousesManagement.resx">
       <DependentUpon>HousesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfitForm.resx">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TariffSelection.resx">
       <DependentUpon>TariffSelection.cs</DependentUpon>
