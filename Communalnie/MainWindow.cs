@@ -53,5 +53,10 @@ namespace Communalnie
         {
             housesComboBox.Items.Clear();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

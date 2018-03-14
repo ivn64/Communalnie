@@ -50,7 +50,7 @@ namespace Communalnie
         private void addButton_Click(object sender, EventArgs e)
         {
             HousesArray.AddItem(new House());
-            housesListBox.Items.Add(HousesArray.GetItem(HousesArray.GetTop()-1).Name);
+            housesListBox.Items.Add(HousesArray.GetItem(HousesArray.GetTop() - 1).Name);
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

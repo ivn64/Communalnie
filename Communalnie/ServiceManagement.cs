@@ -12,7 +12,7 @@ namespace Communalnie
 {
     public partial class ServiceManagement : Form
     {
-        private Services Serv=new Services();
+        private Services Serv = new Services();
         private DataArray<Services> DArr = new DataArray<Services>();
 
         public ServiceManagement()

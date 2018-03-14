@@ -33,8 +33,15 @@
             this.housesButton = new System.Windows.Forms.Button();
             this.graphButton = new System.Windows.Forms.Button();
             this.servicesButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.communalnieDataGridView = new System.Windows.Forms.DataGridView();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // housesComboBox
@@ -98,21 +105,94 @@
             this.servicesButton.UseVisualStyleBackColor = false;
             this.servicesButton.Click += new System.EventHandler(this.servicesButton_Click);
             // 
-            // dataGridView1
+            // communalnieDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 21;
+            this.communalnieDataGridView.AllowUserToAddRows = false;
+            this.communalnieDataGridView.AllowUserToDeleteRows = false;
+            this.communalnieDataGridView.AllowUserToResizeColumns = false;
+            this.communalnieDataGridView.AllowUserToResizeRows = false;
+            this.communalnieDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.communalnieDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.communalnieDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.communalnieDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Service,
+            this.Indications,
+            this.Cost,
+            this.accruals});
+            this.communalnieDataGridView.Location = new System.Drawing.Point(11, 100);
+            this.communalnieDataGridView.Name = "communalnieDataGridView";
+            this.communalnieDataGridView.ReadOnly = true;
+            this.communalnieDataGridView.RowHeadersVisible = false;
+            this.communalnieDataGridView.Size = new System.Drawing.Size(432, 199);
+            this.communalnieDataGridView.TabIndex = 21;
+            this.communalnieDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // yearComboBox
+            // 
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(11, 73);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(91, 21);
+            this.yearComboBox.TabIndex = 22;
+            // 
+            // monthComboBox
+            // 
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Location = new System.Drawing.Point(108, 73);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(141, 21);
+            this.monthComboBox.TabIndex = 23;
+            // 
+            // Service
+            // 
+            this.Service.HeaderText = "Услуга";
+            this.Service.Name = "Service";
+            this.Service.ReadOnly = true;
+            this.Service.Width = 143;
+            // 
+            // Indications
+            // 
+            this.Indications.HeaderText = "Показания";
+            this.Indications.Name = "Indications";
+            this.Indications.ReadOnly = true;
+            this.Indications.Width = 96;
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Стоимость";
+            this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
+            this.Cost.Width = 96;
+            // 
+            // accruals
+            // 
+            this.accruals.HeaderText = "Начисления";
+            this.accruals.Name = "accruals";
+            this.accruals.ReadOnly = true;
+            this.accruals.Width = 96;
+            // 
+            // editButton
+            // 
+            this.editButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.editButton.FlatAppearance.BorderSize = 0;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(338, 305);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(105, 25);
+            this.editButton.TabIndex = 24;
+            this.editButton.Text = "Редактирование";
+            this.editButton.UseVisualStyleBackColor = false;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(472, 311);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(453, 339);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.monthComboBox);
+            this.Controls.Add(this.yearComboBox);
+            this.Controls.Add(this.communalnieDataGridView);
             this.Controls.Add(this.housesComboBox);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.housesButton);
@@ -122,7 +202,7 @@
             this.Text = "Коммуналка";
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.Deactivate += new System.EventHandler(this.MainWindow_Deactivate);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,7 +214,14 @@
         private System.Windows.Forms.Button housesButton;
         private System.Windows.Forms.Button graphButton;
         private System.Windows.Forms.Button servicesButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView communalnieDataGridView;
+        private System.Windows.Forms.ComboBox yearComboBox;
+        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Service;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Indications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accruals;
+        private System.Windows.Forms.Button editButton;
     }
 }
 

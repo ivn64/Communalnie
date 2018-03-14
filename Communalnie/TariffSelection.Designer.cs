@@ -119,6 +119,7 @@
             // 
             // serviceProviderComboBox
             // 
+            this.serviceProviderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.serviceProviderComboBox.Enabled = false;
             this.serviceProviderComboBox.FormattingEnabled = true;
             this.serviceProviderComboBox.Location = new System.Drawing.Point(180, 196);
@@ -129,6 +130,7 @@
             // 
             // communalServiceComboBox
             // 
+            this.communalServiceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.communalServiceComboBox.Enabled = false;
             this.communalServiceComboBox.FormattingEnabled = true;
             this.communalServiceComboBox.Location = new System.Drawing.Point(180, 139);
@@ -139,6 +141,7 @@
             // 
             // municipalityComboBox
             // 
+            this.municipalityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.municipalityComboBox.Enabled = false;
             this.municipalityComboBox.FormattingEnabled = true;
             this.municipalityComboBox.Location = new System.Drawing.Point(180, 58);
@@ -149,6 +152,7 @@
             // 
             // municipalDistrictComboBox
             // 
+            this.municipalDistrictComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.municipalDistrictComboBox.Enabled = false;
             this.municipalDistrictComboBox.FormattingEnabled = true;
             this.municipalDistrictComboBox.Location = new System.Drawing.Point(180, 32);
@@ -159,6 +163,7 @@
             // 
             // subjectRFComboBox
             // 
+            this.subjectRFComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.subjectRFComboBox.FormattingEnabled = true;
             this.subjectRFComboBox.Location = new System.Drawing.Point(180, 6);
             this.subjectRFComboBox.Name = "subjectRFComboBox";
@@ -168,6 +173,7 @@
             // 
             // monthComboBox
             // 
+            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monthComboBox.Enabled = false;
             this.monthComboBox.FormattingEnabled = true;
             this.monthComboBox.Location = new System.Drawing.Point(302, 85);
@@ -178,6 +184,7 @@
             // 
             // YearComboBox
             // 
+            this.YearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.YearComboBox.Enabled = false;
             this.YearComboBox.FormattingEnabled = true;
             this.YearComboBox.Location = new System.Drawing.Point(180, 85);
@@ -197,6 +204,7 @@
             // 
             // CalculationMethodComboBox
             // 
+            this.CalculationMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CalculationMethodComboBox.Enabled = false;
             this.CalculationMethodComboBox.FormattingEnabled = true;
             this.CalculationMethodComboBox.Location = new System.Drawing.Point(180, 169);
@@ -216,6 +224,7 @@
             // 
             // improvementKindComboBox
             // 
+            this.improvementKindComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.improvementKindComboBox.Enabled = false;
             this.improvementKindComboBox.FormattingEnabled = true;
             this.improvementKindComboBox.Location = new System.Drawing.Point(180, 223);
@@ -235,6 +244,7 @@
             // 
             // accommodationsComboBox
             // 
+            this.accommodationsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.accommodationsComboBox.Enabled = false;
             this.accommodationsComboBox.FormattingEnabled = true;
             this.accommodationsComboBox.Location = new System.Drawing.Point(180, 112);
