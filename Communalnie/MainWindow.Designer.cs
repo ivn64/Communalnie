@@ -34,13 +34,14 @@
             this.graphButton = new System.Windows.Forms.Button();
             this.servicesButton = new System.Windows.Forms.Button();
             this.communalnieDataGridView = new System.Windows.Forms.DataGridView();
-            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.editButton = new System.Windows.Forms.Button();
+            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Units = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,6 +120,7 @@
             this.communalnieDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Service,
             this.Indications,
+            this.Units,
             this.Cost,
             this.Accruals});
             this.communalnieDataGridView.Location = new System.Drawing.Point(11, 100);
@@ -127,35 +129,6 @@
             this.communalnieDataGridView.RowHeadersVisible = false;
             this.communalnieDataGridView.Size = new System.Drawing.Size(432, 199);
             this.communalnieDataGridView.TabIndex = 21;
-            this.communalnieDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Service
-            // 
-            this.Service.HeaderText = "Услуга";
-            this.Service.Name = "Service";
-            this.Service.ReadOnly = true;
-            this.Service.Width = 143;
-            // 
-            // Indications
-            // 
-            this.Indications.HeaderText = "Показания";
-            this.Indications.Name = "Indications";
-            this.Indications.ReadOnly = true;
-            this.Indications.Width = 96;
-            // 
-            // Cost
-            // 
-            this.Cost.HeaderText = "Стоимость";
-            this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
-            this.Cost.Width = 96;
-            // 
-            // Accruals
-            // 
-            this.Accruals.HeaderText = "Начисления";
-            this.Accruals.Name = "Accruals";
-            this.Accruals.ReadOnly = true;
-            this.Accruals.Width = 96;
             // 
             // yearComboBox
             // 
@@ -190,6 +163,41 @@
             this.editButton.Text = "Редактирование";
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // Service
+            // 
+            this.Service.HeaderText = "Услуга";
+            this.Service.Name = "Service";
+            this.Service.ReadOnly = true;
+            this.Service.Width = 143;
+            // 
+            // Indications
+            // 
+            this.Indications.HeaderText = "Показания";
+            this.Indications.Name = "Indications";
+            this.Indications.ReadOnly = true;
+            this.Indications.Width = 72;
+            // 
+            // Units
+            // 
+            this.Units.HeaderText = "Ед. изм.";
+            this.Units.Name = "Units";
+            this.Units.ReadOnly = true;
+            this.Units.Width = 72;
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Стоимость";
+            this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
+            this.Cost.Width = 72;
+            // 
+            // Accruals
+            // 
+            this.Accruals.HeaderText = "Начисления";
+            this.Accruals.Name = "Accruals";
+            this.Accruals.ReadOnly = true;
+            this.Accruals.Width = 72;
             // 
             // MainWindow
             // 
@@ -227,6 +235,7 @@
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service;
         private System.Windows.Forms.DataGridViewTextBoxColumn Indications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Units;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Accruals;
     }

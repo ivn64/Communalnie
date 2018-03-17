@@ -45,11 +45,6 @@ namespace Communalnie
             GraphForm.ShowDialog();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void editButton_Click(object sender, EventArgs e)
         {
             if (housesComboBox.SelectedIndex >= 0)
@@ -58,7 +53,7 @@ namespace Communalnie
                 TableEditForm.ShowDialog();
             }
             else
-                MessageBox.Show("Выберите объект и дату");
+                MessageBox.Show("Выберите объект");
         }
 
         private void MainWindow_Load(object sender, EventArgs e)

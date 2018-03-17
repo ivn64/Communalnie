@@ -154,7 +154,6 @@ namespace Communalnie
                     lines.Remove(lines[i]);
                 }
             }*/
-
             HousesArray.SaveToFile("Heuses.dat");
             Close();
         }

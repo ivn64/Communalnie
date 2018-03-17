@@ -31,6 +31,7 @@
             this.communalnieDataGridView = new System.Windows.Forms.DataGridView();
             this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Units = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveButton = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
             this.communalnieDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Service,
             this.Indications,
+            this.Units,
             this.Cost,
             this.Accruals});
             this.communalnieDataGridView.Location = new System.Drawing.Point(12, 52);
@@ -79,21 +81,28 @@
             this.Indications.HeaderText = "Показания";
             this.Indications.Name = "Indications";
             this.Indications.ReadOnly = true;
-            this.Indications.Width = 96;
+            this.Indications.Width = 72;
+            // 
+            // Units
+            // 
+            this.Units.HeaderText = "Ед. изм.";
+            this.Units.Name = "Units";
+            this.Units.ReadOnly = true;
+            this.Units.Width = 72;
             // 
             // Cost
             // 
             this.Cost.HeaderText = "Стоимость";
             this.Cost.Name = "Cost";
             this.Cost.ReadOnly = true;
-            this.Cost.Width = 96;
+            this.Cost.Width = 72;
             // 
             // Accruals
             // 
             this.Accruals.HeaderText = "Начисления";
             this.Accruals.Name = "Accruals";
             this.Accruals.ReadOnly = true;
-            this.Accruals.Width = 96;
+            this.Accruals.Width = 72;
             // 
             // saveButton
             // 
@@ -106,7 +115,6 @@
             this.saveButton.TabIndex = 66;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -178,12 +186,12 @@
             // yearComboBox
             // 
             this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.yearComboBox.Enabled = false;
             this.yearComboBox.FormattingEnabled = true;
             this.yearComboBox.Location = new System.Drawing.Point(51, 25);
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(91, 21);
             this.yearComboBox.TabIndex = 73;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
             // removeDateButton
             // 
@@ -245,13 +253,14 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label entityLabel;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Service;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Indications;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Accruals;
         private System.Windows.Forms.ComboBox monthComboBox;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Button removeDateButton;
         private System.Windows.Forms.Button addDateButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Service;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Indications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Units;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Accruals;
     }
 }
