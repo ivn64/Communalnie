@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.communalnieDataGridView = new System.Windows.Forms.DataGridView();
+            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.entityLabel = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
             this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
-            this.dateLabel = new System.Windows.Forms.Label();
-            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.removeDateButton = new System.Windows.Forms.Button();
+            this.addDateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +67,34 @@
             this.communalnieDataGridView.Size = new System.Drawing.Size(432, 229);
             this.communalnieDataGridView.TabIndex = 22;
             // 
+            // Service
+            // 
+            this.Service.HeaderText = "Услуга";
+            this.Service.Name = "Service";
+            this.Service.ReadOnly = true;
+            this.Service.Width = 143;
+            // 
+            // Indications
+            // 
+            this.Indications.HeaderText = "Показания";
+            this.Indications.Name = "Indications";
+            this.Indications.ReadOnly = true;
+            this.Indications.Width = 96;
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Стоимость";
+            this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
+            this.Cost.Width = 96;
+            // 
+            // Accruals
+            // 
+            this.Accruals.HeaderText = "Начисления";
+            this.Accruals.Name = "Accruals";
+            this.Accruals.ReadOnly = true;
+            this.Accruals.Width = 96;
+            // 
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -76,6 +106,7 @@
             this.saveButton.TabIndex = 66;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -125,24 +156,6 @@
             this.entityLabel.TabIndex = 67;
             this.entityLabel.Text = "Объект";
             // 
-            // monthComboBox
-            // 
-            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.monthComboBox.FormattingEnabled = true;
-            this.monthComboBox.Location = new System.Drawing.Point(160, 25);
-            this.monthComboBox.Name = "monthComboBox";
-            this.monthComboBox.Size = new System.Drawing.Size(141, 21);
-            this.monthComboBox.TabIndex = 69;
-            // 
-            // yearComboBox
-            // 
-            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(63, 25);
-            this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(91, 21);
-            this.yearComboBox.TabIndex = 68;
-            // 
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
@@ -152,33 +165,50 @@
             this.dateLabel.TabIndex = 70;
             this.dateLabel.Text = "Дата";
             // 
-            // Service
+            // monthComboBox
             // 
-            this.Service.HeaderText = "Услуга";
-            this.Service.Name = "Service";
-            this.Service.ReadOnly = true;
-            this.Service.Width = 143;
+            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monthComboBox.Enabled = false;
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Location = new System.Drawing.Point(148, 25);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(141, 21);
+            this.monthComboBox.TabIndex = 74;
             // 
-            // Indications
+            // yearComboBox
             // 
-            this.Indications.HeaderText = "Показания";
-            this.Indications.Name = "Indications";
-            this.Indications.ReadOnly = true;
-            this.Indications.Width = 96;
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearComboBox.Enabled = false;
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(51, 25);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(91, 21);
+            this.yearComboBox.TabIndex = 73;
             // 
-            // Cost
+            // removeDateButton
             // 
-            this.Cost.HeaderText = "Стоимость";
-            this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
-            this.Cost.Width = 96;
+            this.removeDateButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.removeDateButton.FlatAppearance.BorderSize = 0;
+            this.removeDateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeDateButton.Location = new System.Drawing.Point(322, 25);
+            this.removeDateButton.Name = "removeDateButton";
+            this.removeDateButton.Size = new System.Drawing.Size(21, 21);
+            this.removeDateButton.TabIndex = 76;
+            this.removeDateButton.Text = "-";
+            this.removeDateButton.UseVisualStyleBackColor = false;
             // 
-            // Accruals
+            // addDateButton
             // 
-            this.Accruals.HeaderText = "Начисления";
-            this.Accruals.Name = "Accruals";
-            this.Accruals.ReadOnly = true;
-            this.Accruals.Width = 96;
+            this.addDateButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addDateButton.FlatAppearance.BorderSize = 0;
+            this.addDateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addDateButton.Location = new System.Drawing.Point(295, 25);
+            this.addDateButton.Name = "addDateButton";
+            this.addDateButton.Size = new System.Drawing.Size(21, 21);
+            this.addDateButton.TabIndex = 75;
+            this.addDateButton.Text = "+";
+            this.addDateButton.UseVisualStyleBackColor = false;
+            this.addDateButton.Click += new System.EventHandler(this.addDateButton_Click);
             // 
             // CommunalTable
             // 
@@ -186,9 +216,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(458, 339);
-            this.Controls.Add(this.dateLabel);
+            this.Controls.Add(this.removeDateButton);
+            this.Controls.Add(this.addDateButton);
             this.Controls.Add(this.monthComboBox);
             this.Controls.Add(this.yearComboBox);
+            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.entityLabel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
@@ -212,12 +244,14 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label entityLabel;
-        private System.Windows.Forms.ComboBox monthComboBox;
-        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Service;
         private System.Windows.Forms.DataGridViewTextBoxColumn Indications;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Accruals;
+        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.ComboBox yearComboBox;
+        private System.Windows.Forms.Button removeDateButton;
+        private System.Windows.Forms.Button addDateButton;
     }
 }

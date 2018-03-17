@@ -55,6 +55,12 @@
     <Compile Include="CommunalTable.Designer.cs">
       <DependentUpon>CommunalTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateAndMonthAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateAndMonthAddForm.Designer.cs">
+      <DependentUpon>DateAndMonthAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graph.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,7 @@
     <Compile Include="HousesManagement.Designer.cs">
       <DependentUpon>HousesManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfitDate.cs" />
     <Compile Include="ProfitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="CommunalTable.resx">
       <DependentUpon>CommunalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateAndMonthAddForm.resx">
+      <DependentUpon>DateAndMonthAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graph.resx">
       <DependentUpon>Graph.cs</DependentUpon>

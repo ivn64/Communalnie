@@ -27,8 +27,12 @@ namespace Communalnie
             serviceManagementForm.ShowDialog();
         }
 
-        private void MainWindow_Activated(object sender, EventArgs e)
+        private void housesButton_Click(object sender, EventArgs e)
         {
+            HousesManagement HousesManagementForm = new HousesManagement();
+            HousesManagementForm.ShowDialog();
+            housesComboBox.Items.Clear();
+            HousesArray.RemoveItems();
             HousesArray.LoadFromFile("Heuses.dat");
             for (int i = 0; i < HousesArray.GetTop(); i++)
             {
@@ -37,21 +41,10 @@ namespace Communalnie
             }
         }
 
-        private void housesButton_Click(object sender, EventArgs e)
-        {
-            HousesManagement HousesManagementForm = new HousesManagement();
-            HousesManagementForm.ShowDialog();
-        }
-
         private void graphButton_Click(object sender, EventArgs e)
         {
             Graph GraphForm = new Graph();
             GraphForm.ShowDialog();
-        }
-
-        private void MainWindow_Deactivate(object sender, EventArgs e)
-        {
-            housesComboBox.Items.Clear();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -67,12 +60,28 @@ namespace Communalnie
                 TableEditForm.ShowDialog();
             }
             else
-                MessageBox.Show("Выберите объект");
+                MessageBox.Show("Выберите объект и дату");
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            HousesArray.LoadFromFile("Heuses.dat");
+            for (int i = 0; i < HousesArray.GetTop(); i++)
+            {
+                THouse = HousesArray.GetItem(i);
+                housesComboBox.Items.Add(THouse.Name);
+            }
+        }
 
+        private void housesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            yearComboBox.Enabled = true;
+            monthComboBox.Enabled = false;
+        }
+
+        private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            monthComboBox.Enabled = true;
         }
     }
 }

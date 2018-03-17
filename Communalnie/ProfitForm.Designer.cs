@@ -32,12 +32,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.serviceTextBox = new System.Windows.Forms.TextBox();
             this.accrualsTextBox = new System.Windows.Forms.TextBox();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.indicationsTextBox = new System.Windows.Forms.TextBox();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
+            this.servicesComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label4
@@ -76,17 +75,11 @@
             this.label1.TabIndex = 85;
             this.label1.Text = "Услуга";
             // 
-            // serviceTextBox
-            // 
-            this.serviceTextBox.Location = new System.Drawing.Point(180, 6);
-            this.serviceTextBox.Name = "serviceTextBox";
-            this.serviceTextBox.Size = new System.Drawing.Size(214, 20);
-            this.serviceTextBox.TabIndex = 97;
-            // 
             // accrualsTextBox
             // 
             this.accrualsTextBox.Location = new System.Drawing.Point(180, 86);
             this.accrualsTextBox.Name = "accrualsTextBox";
+            this.accrualsTextBox.ReadOnly = true;
             this.accrualsTextBox.Size = new System.Drawing.Size(214, 20);
             this.accrualsTextBox.TabIndex = 98;
             // 
@@ -94,6 +87,7 @@
             // 
             this.costTextBox.Location = new System.Drawing.Point(180, 58);
             this.costTextBox.Name = "costTextBox";
+            this.costTextBox.ReadOnly = true;
             this.costTextBox.Size = new System.Drawing.Size(214, 20);
             this.costTextBox.TabIndex = 99;
             // 
@@ -103,31 +97,30 @@
             this.indicationsTextBox.Name = "indicationsTextBox";
             this.indicationsTextBox.Size = new System.Drawing.Size(214, 20);
             this.indicationsTextBox.TabIndex = 100;
+            this.indicationsTextBox.TextChanged += new System.EventHandler(this.indicationsTextBox_TextChanged);
             // 
-            // deleteButton
+            // okButton
             // 
-            this.deleteButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteButton.FlatAppearance.BorderSize = 0;
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(305, 112);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(89, 31);
-            this.deleteButton.TabIndex = 102;
-            this.deleteButton.Text = "Отмена";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.okButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.okButton.FlatAppearance.BorderSize = 0;
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okButton.Location = new System.Drawing.Point(305, 112);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(89, 31);
+            this.okButton.TabIndex = 102;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = false;
+            this.okButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // addButton
+            // servicesComboBox
             // 
-            this.addButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.addButton.FlatAppearance.BorderSize = 0;
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Location = new System.Drawing.Point(212, 112);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(87, 31);
-            this.addButton.TabIndex = 101;
-            this.addButton.Text = "Добавить";
-            this.addButton.UseVisualStyleBackColor = false;
+            this.servicesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.servicesComboBox.FormattingEnabled = true;
+            this.servicesComboBox.Location = new System.Drawing.Point(180, 6);
+            this.servicesComboBox.Name = "servicesComboBox";
+            this.servicesComboBox.Size = new System.Drawing.Size(214, 21);
+            this.servicesComboBox.TabIndex = 103;
+            this.servicesComboBox.SelectedIndexChanged += new System.EventHandler(this.servicesComboBox_SelectedIndexChanged);
             // 
             // ProfitForm
             // 
@@ -135,18 +128,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(410, 153);
-            this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.servicesComboBox);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.indicationsTextBox);
             this.Controls.Add(this.costTextBox);
             this.Controls.Add(this.accrualsTextBox);
-            this.Controls.Add(this.serviceTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ProfitForm";
             this.Text = "Добавление начисления";
+            this.Load += new System.EventHandler(this.ProfitForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,11 +150,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox serviceTextBox;
         private System.Windows.Forms.TextBox accrualsTextBox;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.TextBox indicationsTextBox;
-        private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.ComboBox servicesComboBox;
     }
 }

@@ -8,39 +8,29 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Communalnie
 {
+    [Serializable]
     class DataArray<T>
     {
-        private int[] Arr = new int[10];
-
-        private T[] myArray;
-
-        private int length, top; //длина и последний элемент
+        private List<T> myArray;
 
         public DataArray()
         {
-            length = 10;
-            myArray = new T[length];
+            myArray = new List<T>();
         }
 
         public void AddItem(T item)
         {
-            if (top < length)
-                myArray[top++] = item;
+            myArray.Add(item);
         }
 
         public void RemoveItem(int index)
         {
-            if (index < top)
-                for (int i = index; i < top; i++)
-                {
-                    myArray[i] = myArray[i + 1];
-                }
-            top--;
+            myArray.RemoveAt(index);
         }
 
         public int GetTop()
         {
-            return top;
+            return myArray.Count();
         }
 
         public T GetItem(int i)
@@ -53,14 +43,19 @@ namespace Communalnie
             myArray[index] = item;
         }
 
+        public void RemoveItems()
+        {
+            myArray.Clear();
+        }
+
         public void SaveToFile(string fileName)
         {
             BinaryFormatter binFormat = new BinaryFormatter();
             using (FileStream fStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
-                byte[] bArray = BitConverter.GetBytes(top);
+                byte[] bArray = BitConverter.GetBytes(myArray.Count());
                 fStream.Write(bArray, 0, bArray.Length);
-                for (int i = 0; i < top; i++)
+                for (int i = 0; i < myArray.Count(); i++)
                 {
                     binFormat.Serialize(fStream, myArray[i]);
                 }
@@ -76,10 +71,10 @@ namespace Communalnie
                 {
                     byte[] bArray = new byte[sizeof(int)];
                     fStream.Read(bArray, 0, bArray.Length);
-                    top = BitConverter.ToInt32(bArray, 0);
+                    int top = BitConverter.ToInt32(bArray, 0);
                     for (int i = 0; i < top; i++)
                     {
-                        myArray[i] = (T)binFormat.Deserialize(fStream);
+                        myArray.Add((T)binFormat.Deserialize(fStream));
                     }
                 }
             }

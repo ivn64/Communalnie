@@ -34,13 +34,13 @@
             this.graphButton = new System.Windows.Forms.Button();
             this.servicesButton = new System.Windows.Forms.Button();
             this.communalnieDataGridView = new System.Windows.Forms.DataGridView();
-            this.yearComboBox = new System.Windows.Forms.ComboBox();
-            this.monthComboBox = new System.Windows.Forms.ComboBox();
-            this.editButton = new System.Windows.Forms.Button();
             this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Indications = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accruals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.editButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@
             this.housesComboBox.Name = "housesComboBox";
             this.housesComboBox.Size = new System.Drawing.Size(141, 21);
             this.housesComboBox.TabIndex = 20;
+            this.housesComboBox.SelectedIndexChanged += new System.EventHandler(this.housesComboBox_SelectedIndexChanged);
             // 
             // exportButton
             // 
@@ -128,37 +129,6 @@
             this.communalnieDataGridView.TabIndex = 21;
             this.communalnieDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // yearComboBox
-            // 
-            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(11, 73);
-            this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(91, 21);
-            this.yearComboBox.TabIndex = 22;
-            // 
-            // monthComboBox
-            // 
-            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.monthComboBox.FormattingEnabled = true;
-            this.monthComboBox.Location = new System.Drawing.Point(108, 73);
-            this.monthComboBox.Name = "monthComboBox";
-            this.monthComboBox.Size = new System.Drawing.Size(141, 21);
-            this.monthComboBox.TabIndex = 23;
-            // 
-            // editButton
-            // 
-            this.editButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.editButton.FlatAppearance.BorderSize = 0;
-            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editButton.Location = new System.Drawing.Point(338, 305);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(105, 25);
-            this.editButton.TabIndex = 24;
-            this.editButton.Text = "Редактирование";
-            this.editButton.UseVisualStyleBackColor = false;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
             // Service
             // 
             this.Service.HeaderText = "Услуга";
@@ -187,6 +157,40 @@
             this.Accruals.ReadOnly = true;
             this.Accruals.Width = 96;
             // 
+            // yearComboBox
+            // 
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearComboBox.Enabled = false;
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(11, 73);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(91, 21);
+            this.yearComboBox.TabIndex = 22;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
+            // 
+            // monthComboBox
+            // 
+            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monthComboBox.Enabled = false;
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Location = new System.Drawing.Point(108, 73);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(141, 21);
+            this.monthComboBox.TabIndex = 23;
+            // 
+            // editButton
+            // 
+            this.editButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.editButton.FlatAppearance.BorderSize = 0;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(338, 305);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(105, 25);
+            this.editButton.TabIndex = 24;
+            this.editButton.Text = "Редактирование";
+            this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,8 +208,6 @@
             this.Controls.Add(this.servicesButton);
             this.Name = "MainWindow";
             this.Text = "Коммуналка";
-            this.Activated += new System.EventHandler(this.MainWindow_Activated);
-            this.Deactivate += new System.EventHandler(this.MainWindow_Deactivate);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.communalnieDataGridView)).EndInit();
             this.ResumeLayout(false);

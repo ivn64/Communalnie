@@ -9,13 +9,12 @@ namespace Communalnie
     [Serializable]
     class Profit
     {
-        public string Entity {get; set;}
+        /*public string Entity {get; set;}
         public int Year { get; set; }
-        public string Month { get; set; }
+        public string Month { get; set; }*/
         public string Service { get; set; }
         public float Indications { get; set; }
         public float Cost { get; set; }
-
         private float accruals;
 
         public float GetAccruals()

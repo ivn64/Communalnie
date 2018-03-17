@@ -141,6 +141,20 @@ namespace Communalnie
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            /*for (int i = 0; i < HousesArray.GetTop(); ++i)
+            {
+                int count = lines.Count(str => str == lines[i]);
+                if (count > 1)
+                {
+                    Console.WriteLine
+                    (
+                        "Строка '{0}' повторяется {1} раз(-а).",
+                        lines[i], count
+                    );
+                    lines.Remove(lines[i]);
+                }
+            }*/
+
             HousesArray.SaveToFile("Heuses.dat");
             Close();
         }
