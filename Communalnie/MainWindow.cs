@@ -12,7 +12,6 @@ namespace Communalnie
 {
     public partial class MainWindow : Form
     {
-        private House THouse = new House();
         private DataArray<House> HousesArray = new DataArray<House>();
         public string Entity { get; set; }
 
@@ -36,8 +35,7 @@ namespace Communalnie
             HousesArray.LoadFromFile("Heuses.dat");
             for (int i = 0; i < HousesArray.GetTop(); i++)
             {
-                THouse = HousesArray.GetItem(i);
-                housesComboBox.Items.Add(THouse.Name);
+                housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
             }
         }
 
@@ -68,8 +66,7 @@ namespace Communalnie
             HousesArray.LoadFromFile("Heuses.dat");
             for (int i = 0; i < HousesArray.GetTop(); i++)
             {
-                THouse = HousesArray.GetItem(i);
-                housesComboBox.Items.Add(THouse.Name);
+                housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
             }
         }
 
