@@ -12,12 +12,15 @@ namespace Communalnie
 {
     public partial class MainWindow : Form
     {
-        private DataArray<House> HousesArray = new DataArray<House>();
+        private DataArray<House> HousesArray;
+        private DataArray<ProfitTable> ProfitTableArray;
         public string Entity { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            HousesArray = new DataArray<House>();
+            ProfitTableArray = new DataArray<ProfitTable>();
         }
 
         private void servicesButton_Click(object sender, EventArgs e)
@@ -31,11 +34,11 @@ namespace Communalnie
             HousesManagement HousesManagementForm = new HousesManagement();
             HousesManagementForm.ShowDialog();
             housesComboBox.Items.Clear();
-            HousesArray.RemoveItems();
-            HousesArray.LoadFromFile("Heuses.dat");
-            for (int i = 0; i < HousesArray.GetTop(); i++)
+            ProfitTableArray.RemoveItems();
+            ProfitTableArray.LoadFromFile("Tables.dat");
+            for (int i = 0; i < ProfitTableArray.GetTop(); i++)
             {
-                housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
+                housesComboBox.Items.Add(ProfitTableArray.GetItem(i).Entity);
             }
         }
 
@@ -49,7 +52,7 @@ namespace Communalnie
         {
             if (housesComboBox.SelectedIndex >= 0)
             {
-                CommunalTable TableEditForm = new CommunalTable(housesComboBox.SelectedItem.ToString());
+                CommunalTable TableEditForm = new CommunalTable(housesComboBox.SelectedIndex, ProfitTableArray);
                 TableEditForm.ShowDialog();
             }
             else
@@ -58,10 +61,10 @@ namespace Communalnie
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            HousesArray.LoadFromFile("Heuses.dat");
-            for (int i = 0; i < HousesArray.GetTop(); i++)
+            ProfitTableArray.LoadFromFile("Tables.dat");
+            for (int i = 0; i < ProfitTableArray.GetTop(); i++)
             {
-                housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
+                housesComboBox.Items.Add(ProfitTableArray.GetItem(i).Entity);
             }
         }
 

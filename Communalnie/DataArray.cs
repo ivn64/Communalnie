@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Communalnie
 {
     [Serializable]
-    class DataArray<T>
+    public class DataArray<T>
     {
         private List<T> myArray;
 

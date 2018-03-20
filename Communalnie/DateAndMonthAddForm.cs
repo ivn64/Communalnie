@@ -12,8 +12,8 @@ namespace Communalnie
 {
     public partial class DateAndMonthAddForm : Form
     {
-        public int Year { get; }
-        public string Month { get; }
+        public int Year { get; set; }
+        public string Month { get; set; }
 
         public DateAndMonthAddForm()
         {
@@ -22,6 +22,8 @@ namespace Communalnie
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Year = (int)yearComboBox.SelectedItem;
+            Month = (string)monthComboBox.SelectedItem;
             Close();
         }
     }

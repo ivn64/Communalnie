@@ -13,7 +13,7 @@ namespace Communalnie
     public partial class HousesManagement : Form
     {
         private House THouse = new House();
-
+        private DataArray<ProfitTable> ProfitTableArray = new DataArray<ProfitTable>();
         private DataArray<House> HousesArray = new DataArray<House>();
 
         public HousesManagement()
@@ -42,15 +42,16 @@ namespace Communalnie
             HousesArray.LoadFromFile("Heuses.dat");
             for (int i = 0; i < HousesArray.GetTop(); i++)
             {
-                THouse = HousesArray.GetItem(i);
-                housesListBox.Items.Add(THouse.Name);
+                housesListBox.Items.Add(HousesArray.GetItem(i).Name);
             }
+            ProfitTableArray.LoadFromFile("Tables.dat");
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             HousesArray.AddItem(new House());
             housesListBox.Items.Add(HousesArray.GetItem(HousesArray.GetTop() - 1).Name);
+            ProfitTableArray.AddItem(new ProfitTable(HousesArray.GetItem(HousesArray.GetTop() - 1).Name));
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -58,7 +59,8 @@ namespace Communalnie
             if (housesListBox.SelectedIndex >= 0)
             {
                 HousesArray.RemoveItem(housesListBox.SelectedIndex);
-                housesListBox.Items.Remove(housesListBox.SelectedItem);
+                ProfitTableArray.RemoveItem(housesListBox.SelectedIndex);
+                housesListBox.Items.RemoveAt(housesListBox.SelectedIndex);
             }
         }
 
@@ -68,6 +70,7 @@ namespace Communalnie
             {
                 THouse.Name=descriptionTextBox.Text;
                 HousesArray.SetItem(THouse, housesListBox.SelectedIndex);
+                ProfitTableArray.GetItem(housesListBox.SelectedIndex).Entity = descriptionTextBox.Text;
                 housesListBox.Items[housesListBox.SelectedIndex] = descriptionTextBox.Text;
             }
         }
@@ -141,21 +144,24 @@ namespace Communalnie
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            /*for (int i = 0; i < HousesArray.GetTop(); ++i)
-            {
-                int count = lines.Count(str => str == lines[i]);
-                if (count > 1)
+            int count = 0;
+            List<string> lines = new List<string>();
+                for (int i = 0; i < HousesArray.GetTop(); i++)
                 {
-                    Console.WriteLine
-                    (
-                        "Строка '{0}' повторяется {1} раз(-а).",
-                        lines[i], count
-                    );
-                    lines.Remove(lines[i]);
+                    lines.Add(HousesArray.GetItem(i).Name);
                 }
-            }*/
-            HousesArray.SaveToFile("Heuses.dat");
-            Close();
+                for (int i = 0; i < lines.Count; ++i)
+                {
+                    count = lines.Count(str => str == lines[i]);
+                }
+            if (count > 1)
+                MessageBox.Show("В списке объекты с одинаковыми именами!");
+            else
+            {
+                ProfitTableArray.SaveToFile("Tables.dat");
+                HousesArray.SaveToFile("Heuses.dat");
+                Close();
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

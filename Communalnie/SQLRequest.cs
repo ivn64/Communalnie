@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
 
@@ -10,7 +11,7 @@ namespace Communalnie
 {
     class SQLRequest
     {
-        private string connStr = "server=localhost;user=root;database=Communalnie;password=;";        
+        private string connStr = "server=localhost;user=root;database=Communalnie;password=;";
         private MySqlConnection conn;
 
         public SQLRequest()

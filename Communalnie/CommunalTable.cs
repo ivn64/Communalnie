@@ -13,24 +13,34 @@ namespace Communalnie
     public partial class CommunalTable : Form
     {
 
-        private string entity;
+        private int index;
+        private DataArray<ProfitTable> Tables = new DataArray<ProfitTable>();
 
-        public CommunalTable(string tEntity)
+        public CommunalTable(int tIndex, DataArray<ProfitTable> tTables)
         {
             InitializeComponent();
-            entity = tEntity;
+            index = tIndex;
+            Tables = tTables;
         }
 
         private void CommunalTable_Load(object sender, EventArgs e)
         {
-            entityLabel.Text = "Объект: " + entity;
+            entityLabel.Text = "Объект: " + Tables.GetItem(index).Entity;
+            for (int i = 0; i < Tables.GetTop(); i++)
+            {
+                if (Tables.GetItem(i).Entity == Tables.GetItem(index).Entity)
+                {
+                    if (Tables.GetItem(i).Year != 0)
+                        yearComboBox.Items.Add(Tables.GetItem(i).Year);
+                }
+            }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            /*ProfitForm Profit = new ProfitForm();
+            ProfitForm Profit = new ProfitForm();
             Profit.ShowDialog();
-            if (Profit.Accruals > 0)
+            /*if (Profit.Accruals > 0)
             {
                 communalnieDataGridView.Rows.Add();
                 communalnieDataGridView[0, communalnieDataGridView.Rows.Count - 1].Value = Profit.Service;
@@ -54,6 +64,7 @@ namespace Communalnie
         {
             DateAndMonthAddForm DAM = new DateAndMonthAddForm();
             DAM.ShowDialog();
+
         }
 
         private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)

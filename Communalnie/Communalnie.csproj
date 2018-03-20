@@ -74,7 +74,7 @@
     <Compile Include="HousesManagement.Designer.cs">
       <DependentUpon>HousesManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProfitDate.cs" />
+    <Compile Include="ProfitTable.cs" />
     <Compile Include="ProfitForm.cs">
       <SubType>Form</SubType>
     </Compile>

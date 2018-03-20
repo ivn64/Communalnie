@@ -52,7 +52,7 @@ namespace Communalnie
             if (servicesListBox.SelectedIndex >= 0)
             {
                 DArr.RemoveItem(servicesListBox.SelectedIndex);
-                servicesListBox.Items.Remove(servicesListBox.SelectedItem);
+                servicesListBox.Items.RemoveAt(servicesListBox.SelectedIndex);
             }
         }
 
@@ -132,9 +132,16 @@ namespace Communalnie
 
         private void tariffSelectButton_Click(object sender, EventArgs e)
         {
-            TariffSelection TariffForm = new TariffSelection();
-            TariffForm.ShowDialog();
-            priceTextBox.Text = TariffForm.TarifPrice;
+            try
+            {
+                TariffSelection TariffForm = new TariffSelection();
+                TariffForm.ShowDialog();
+                priceTextBox.Text = TariffForm.TarifPrice;
+            }
+            catch
+            {
+                MessageBox.Show("Нет соединения с сервером");
+            }
         }
     }
 }
