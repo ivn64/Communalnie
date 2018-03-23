@@ -12,13 +12,21 @@ namespace Communalnie
 {
     public partial class HousesManagement : Form
     {
-        private House THouse = new House();
-        private DataArray<ProfitTable> ProfitTableArray = new DataArray<ProfitTable>();
-        private DataArray<House> HousesArray = new DataArray<House>();
+        private House THouse;
+        public DataArray<House> HousesArray { get; set; }
+        public bool isSave { get; set; }
 
         public HousesManagement()
         {
             InitializeComponent();
+            THouse = new House();
+            HousesArray = new DataArray<House>();
+        }
+
+        public HousesManagement(DataArray<House> ThousesArray)
+        {
+            InitializeComponent();
+            HousesArray = new DataArray<House>(ThousesArray);
         }
 
         private void housesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,19 +47,16 @@ namespace Communalnie
 
         private void HousesManagement_Load(object sender, EventArgs e)
         {
-            HousesArray.LoadFromFile("Heuses.dat");
             for (int i = 0; i < HousesArray.GetTop(); i++)
             {
                 housesListBox.Items.Add(HousesArray.GetItem(i).Name);
             }
-            ProfitTableArray.LoadFromFile("Tables.dat");
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             HousesArray.AddItem(new House());
             housesListBox.Items.Add(HousesArray.GetItem(HousesArray.GetTop() - 1).Name);
-            ProfitTableArray.AddItem(new ProfitTable(HousesArray.GetItem(HousesArray.GetTop() - 1).Name));
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -59,7 +64,6 @@ namespace Communalnie
             if (housesListBox.SelectedIndex >= 0)
             {
                 HousesArray.RemoveItem(housesListBox.SelectedIndex);
-                ProfitTableArray.RemoveItem(housesListBox.SelectedIndex);
                 housesListBox.Items.RemoveAt(housesListBox.SelectedIndex);
             }
         }
@@ -70,7 +74,6 @@ namespace Communalnie
             {
                 THouse.Name=descriptionTextBox.Text;
                 HousesArray.SetItem(THouse, housesListBox.SelectedIndex);
-                ProfitTableArray.GetItem(housesListBox.SelectedIndex).Entity = descriptionTextBox.Text;
                 housesListBox.Items[housesListBox.SelectedIndex] = descriptionTextBox.Text;
             }
         }
@@ -158,8 +161,7 @@ namespace Communalnie
                 MessageBox.Show("В списке объекты с одинаковыми именами!");
             else
             {
-                ProfitTableArray.SaveToFile("Tables.dat");
-                HousesArray.SaveToFile("Heuses.dat");
+                isSave = true;
                 Close();
             }
         }

@@ -115,6 +115,7 @@
             this.saveButton.TabIndex = 66;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -181,7 +182,9 @@
             this.monthComboBox.Location = new System.Drawing.Point(148, 25);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(141, 21);
+            this.monthComboBox.Sorted = true;
             this.monthComboBox.TabIndex = 74;
+            this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.monthComboBox_SelectedIndexChanged);
             // 
             // yearComboBox
             // 
@@ -190,12 +193,14 @@
             this.yearComboBox.Location = new System.Drawing.Point(51, 25);
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(91, 21);
+            this.yearComboBox.Sorted = true;
             this.yearComboBox.TabIndex = 73;
             this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
             // removeDateButton
             // 
             this.removeDateButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.removeDateButton.Enabled = false;
             this.removeDateButton.FlatAppearance.BorderSize = 0;
             this.removeDateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeDateButton.Location = new System.Drawing.Point(322, 25);
@@ -204,6 +209,7 @@
             this.removeDateButton.TabIndex = 76;
             this.removeDateButton.Text = "-";
             this.removeDateButton.UseVisualStyleBackColor = false;
+            this.removeDateButton.Click += new System.EventHandler(this.removeDateButton_Click);
             // 
             // addDateButton
             // 

@@ -18,6 +18,17 @@ namespace Communalnie
             myArray = new List<T>();
         }
 
+        public DataArray(DataArray<T> Temp)
+        {
+            myArray = new List<T>();
+            myArray.AddRange(Temp.myArray);
+        }
+
+        public void Clone(DataArray<T> Temp)
+        {
+            myArray.AddRange(Temp.myArray);
+        }
+
         public void AddItem(T item)
         {
             myArray.Add(item);

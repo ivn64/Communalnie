@@ -14,16 +14,31 @@ namespace Communalnie
     {
         public int Year { get; set; }
         public string Month { get; set; }
+        public bool isSave { get; set; }
 
         public DateAndMonthAddForm()
         {
             InitializeComponent();
+            isSave = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Year = (int)yearComboBox.SelectedItem;
-            Month = (string)monthComboBox.SelectedItem;
+            if (yearComboBox.SelectedIndex >= 0 && monthComboBox.SelectedIndex >= 0)
+            {
+                Year = Int32.Parse(yearComboBox.SelectedItem.ToString());
+                Month = (string)monthComboBox.SelectedItem;
+                isSave = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Выберите год и месяц");
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

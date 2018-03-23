@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 namespace Communalnie
 {
     [Serializable]
-    class House
+    public class House
     {
         public string Name { get; set; }
-
         public string Adress { get; set; }
-
         public float TotalArea { get; set; }
-
         public int NumberOfPeoples { get; set; }
-
         public bool IsPrivate { get; set; }
+        public List<ProfitTable> TablesList { get; set; }
 
         public House()
         {
@@ -26,6 +23,18 @@ namespace Communalnie
             TotalArea = 0;
             NumberOfPeoples = 0;
             IsPrivate = false;
+            TablesList = new List<ProfitTable>();
+        }
+
+        public House(House Temp)
+        {
+            Name = Temp.Name;
+            Adress = Temp.Adress;
+            TotalArea = Temp.TotalArea;
+            NumberOfPeoples = Temp.NumberOfPeoples;
+            IsPrivate = Temp.IsPrivate;
+            TablesList = new List<ProfitTable>();
+            TablesList.AddRange(Temp.TablesList);
         }
     }
 }

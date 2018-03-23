@@ -16,17 +16,14 @@ namespace Communalnie
         public float Indications { get; set; }
         public float Cost { get; set; }
         public float Accruals { get; set; }
-        private Services Serv = new Services();
-        private DataArray<Services> DArr = new DataArray<Services>();
+        private DataArray<Services> DArr;
+        public bool Issave { get; set; }
 
         public ProfitForm()
         {
             InitializeComponent();
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            Close();
+            DArr = new DataArray<Services>();
+            Issave = false;
         }
 
         private void ProfitForm_Load(object sender, EventArgs e)
@@ -34,8 +31,7 @@ namespace Communalnie
             DArr.LoadFromFile("Services.dat");
             for (int i = 0; i < DArr.GetTop(); i++)
             {
-                Serv = DArr.GetItem(i);
-                servicesComboBox.Items.Add(Serv.Name);
+                servicesComboBox.Items.Add(DArr.GetItem(i).Name);
             }
         }
 
@@ -66,6 +62,12 @@ namespace Communalnie
                         indicationsTextBox.SelectionStart = indicationsTextBox.Text.Length;
                     }
                 }
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Issave = true;
+            Close();
         }
     }
 }

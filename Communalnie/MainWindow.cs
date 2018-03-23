@@ -13,14 +13,12 @@ namespace Communalnie
     public partial class MainWindow : Form
     {
         private DataArray<House> HousesArray;
-        private DataArray<ProfitTable> ProfitTableArray;
         public string Entity { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             HousesArray = new DataArray<House>();
-            ProfitTableArray = new DataArray<ProfitTable>();
         }
 
         private void servicesButton_Click(object sender, EventArgs e)
@@ -31,14 +29,18 @@ namespace Communalnie
 
         private void housesButton_Click(object sender, EventArgs e)
         {
-            HousesManagement HousesManagementForm = new HousesManagement();
+            HousesManagement HousesManagementForm = new HousesManagement(HousesArray);
             HousesManagementForm.ShowDialog();
-            housesComboBox.Items.Clear();
-            ProfitTableArray.RemoveItems();
-            ProfitTableArray.LoadFromFile("Tables.dat");
-            for (int i = 0; i < ProfitTableArray.GetTop(); i++)
+            if (HousesManagementForm.isSave == true)
             {
-                housesComboBox.Items.Add(ProfitTableArray.GetItem(i).Entity);
+                housesComboBox.Items.Clear();
+                HousesArray.RemoveItems();
+                HousesArray.Clone(HousesManagementForm.HousesArray);
+                HousesArray.SaveToFile("Houses.dat");
+                for (int i = 0; i < HousesArray.GetTop(); i++)
+                {
+                    housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
+                }
             }
         }
 
@@ -52,8 +54,14 @@ namespace Communalnie
         {
             if (housesComboBox.SelectedIndex >= 0)
             {
-                CommunalTable TableEditForm = new CommunalTable(housesComboBox.SelectedIndex, ProfitTableArray);
+                int index = housesComboBox.SelectedIndex;
+                CommunalTable TableEditForm = new CommunalTable(HousesArray.GetItem(index));
                 TableEditForm.ShowDialog();
+                if (TableEditForm.isSave == true)
+                {
+                    HousesArray.SetItem(TableEditForm.SelHouse, index);
+                    HousesArray.SaveToFile("Houses.dat");
+                }
             }
             else
                 MessageBox.Show("Выберите объект");
@@ -61,10 +69,10 @@ namespace Communalnie
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            ProfitTableArray.LoadFromFile("Tables.dat");
-            for (int i = 0; i < ProfitTableArray.GetTop(); i++)
+            HousesArray.LoadFromFile("Houses.dat");
+            for (int i = 0; i < HousesArray.GetTop(); i++)
             {
-                housesComboBox.Items.Add(ProfitTableArray.GetItem(i).Entity);
+                housesComboBox.Items.Add(HousesArray.GetItem(i).Name);
             }
         }
 

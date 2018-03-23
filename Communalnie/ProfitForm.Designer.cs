@@ -110,7 +110,7 @@
             this.okButton.TabIndex = 102;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = false;
-            this.okButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // servicesComboBox
             // 

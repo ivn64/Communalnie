@@ -9,19 +9,20 @@ namespace Communalnie
     [Serializable]
     public class ProfitTable
     {
-        public string Entity { get; set; }
         public int Year { get; set; }
         public string Month { get; set; }
-        private List<Profit> profitList;
+        public List<Profit> profitsList { get; set; }
 
         public ProfitTable()
         {
-            profitList = new List<Profit>();
+            profitsList = new List<Profit>();
         }
 
-        public ProfitTable(string tEntity)
+        public ProfitTable(int tYear, string tMonth)
         {
-            Entity = tEntity;
+            profitsList = new List<Profit>();
+            Year = tYear;
+            Month = tMonth;
         }
     }
 }
