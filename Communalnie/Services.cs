@@ -10,11 +10,8 @@ namespace Communalnie
     class Services
     {
         public string Name {get; set;}
-
         public bool IsMeter { get; set; }
-
         public string Unit { get; set; }
-
         public float Price { get; set; }
 
         public Services()

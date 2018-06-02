@@ -11,16 +11,24 @@ namespace Communalnie
     {
         public int Year { get; set; }
         public string Month { get; set; }
-        public List<Profit> profitsList { get; set; }
+        public List<Profit> ProfitsList { get; set; }
 
         public ProfitTable()
         {
-            profitsList = new List<Profit>();
+            ProfitsList = new List<Profit>();
+        }
+
+        public ProfitTable(ProfitTable Temp)
+        {
+            Year = Temp.Year;
+            Month = Temp.Month;
+            ProfitsList = new List<Profit>();
+            ProfitsList.AddRange(Temp.ProfitsList);
         }
 
         public ProfitTable(int tYear, string tMonth)
         {
-            profitsList = new List<Profit>();
+            ProfitsList = new List<Profit>();
             Year = tYear;
             Month = tMonth;
         }

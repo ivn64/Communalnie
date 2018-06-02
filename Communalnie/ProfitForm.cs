@@ -14,6 +14,7 @@ namespace Communalnie
     {
         public string Service { get; set; }
         public float Indications { get; set; }
+        public string Unit { get; set; }
         public float Cost { get; set; }
         public float Accruals { get; set; }
         private DataArray<Services> DArr;
@@ -28,10 +29,13 @@ namespace Communalnie
 
         private void ProfitForm_Load(object sender, EventArgs e)
         {
+            string meter = "по тарифу";
             DArr.LoadFromFile("Services.dat");
             for (int i = 0; i < DArr.GetTop(); i++)
             {
-                servicesComboBox.Items.Add(DArr.GetItem(i).Name);
+                if (DArr.GetItem(i).IsMeter == true)
+                    meter = "по счётчику";
+                servicesComboBox.Items.Add(DArr.GetItem(i).Name + " (" + meter + ")");
             }
         }
 
@@ -40,6 +44,8 @@ namespace Communalnie
             costTextBox.Text = DArr.GetItem(servicesComboBox.SelectedIndex).Price.ToString();
             Service = DArr.GetItem(servicesComboBox.SelectedIndex).Name;
             Cost = DArr.GetItem(servicesComboBox.SelectedIndex).Price;
+            Unit = DArr.GetItem(servicesComboBox.SelectedIndex).Unit;
+            unitLabel.Text = Unit;
         }
 
         private void indicationsTextBox_TextChanged(object sender, EventArgs e)

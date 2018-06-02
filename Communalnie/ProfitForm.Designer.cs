@@ -37,6 +37,7 @@
             this.indicationsTextBox = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.servicesComboBox = new System.Windows.Forms.ComboBox();
+            this.unitLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -80,7 +81,7 @@
             this.accrualsTextBox.Location = new System.Drawing.Point(180, 86);
             this.accrualsTextBox.Name = "accrualsTextBox";
             this.accrualsTextBox.ReadOnly = true;
-            this.accrualsTextBox.Size = new System.Drawing.Size(214, 20);
+            this.accrualsTextBox.Size = new System.Drawing.Size(152, 20);
             this.accrualsTextBox.TabIndex = 98;
             // 
             // costTextBox
@@ -122,12 +123,21 @@
             this.servicesComboBox.TabIndex = 103;
             this.servicesComboBox.SelectedIndexChanged += new System.EventHandler(this.servicesComboBox_SelectedIndexChanged);
             // 
+            // unitLabel
+            // 
+            this.unitLabel.AutoSize = true;
+            this.unitLabel.Location = new System.Drawing.Point(338, 89);
+            this.unitLabel.Name = "unitLabel";
+            this.unitLabel.Size = new System.Drawing.Size(0, 13);
+            this.unitLabel.TabIndex = 104;
+            // 
             // ProfitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(410, 153);
+            this.Controls.Add(this.unitLabel);
             this.Controls.Add(this.servicesComboBox);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.indicationsTextBox);
@@ -155,5 +165,6 @@
         private System.Windows.Forms.TextBox indicationsTextBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.ComboBox servicesComboBox;
+        private System.Windows.Forms.Label unitLabel;
     }
 }

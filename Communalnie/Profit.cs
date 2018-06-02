@@ -11,17 +11,27 @@ namespace Communalnie
     {
         public string Service { get; set; }
         public float Indications { get; set; }
+        public string Unit { get; set; }
         public float Cost { get; set; }
-        private float accruals;
+        public float Accruals { get; set; }
+
+        public Profit(string tService, float tIndications, string tUnit, float tCost, float taccruals)
+        {
+            Service = tService;
+            Indications = tIndications;
+            Unit = tUnit;
+            Cost = tCost;
+            Accruals = taccruals;
+        }
 
         public float GetAccruals()
         {
-            return accruals;
+            return Accruals;
         }
 
         public void SetAccruals()
         {
-            accruals = Indications * Cost;
+            Accruals = Indications * Cost;
         }
     }
 }

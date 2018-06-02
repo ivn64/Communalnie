@@ -34,7 +34,10 @@ namespace Communalnie
             NumberOfPeoples = Temp.NumberOfPeoples;
             IsPrivate = Temp.IsPrivate;
             TablesList = new List<ProfitTable>();
-            TablesList.AddRange(Temp.TablesList);
+            for (int i = 0; i < Temp.TablesList.Count; i++)
+            {
+                TablesList.Add(new ProfitTable(Temp.TablesList[i]));
+            }
         }
     }
 }

@@ -26,7 +26,12 @@ namespace Communalnie
         public HousesManagement(DataArray<House> ThousesArray)
         {
             InitializeComponent();
-            HousesArray = new DataArray<House>(ThousesArray);
+            THouse = new House();
+            HousesArray = new DataArray<House>();
+            for (int i = 0; i < ThousesArray.GetTop(); i++)
+            {
+                HousesArray.AddItem(new House(ThousesArray.GetItem(i)));
+            }
         }
 
         private void housesListBox_SelectedIndexChanged(object sender, EventArgs e)

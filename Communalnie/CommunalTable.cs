@@ -12,9 +12,9 @@ namespace Communalnie
 {
     public partial class CommunalTable : Form
     {
-
         public House SelHouse { get; set; }
         public bool isSave { get; set; }
+        private int selectedTablesListIndex = -1;
 
         public CommunalTable(House TSelHouse)
         {
@@ -31,7 +31,7 @@ namespace Communalnie
                 bool count = false;
                 for (int j = 0; j < yearComboBox.Items.Count; j++)
                 {
-                    if (UInt32.Parse(yearComboBox.Items[j].ToString()) == SelHouse.TablesList[i].Year)
+                    if (uint.Parse(yearComboBox.Items[j].ToString()) == SelHouse.TablesList[i].Year)
                     {
                         count = true;
                     }
@@ -43,21 +43,32 @@ namespace Communalnie
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            ProfitForm Profit = new ProfitForm();
-            Profit.ShowDialog();
-            if (Profit.Issave == true)
+            if (monthComboBox.SelectedIndex >= 0)
             {
-                communalnieDataGridView.Rows.Add();
-                communalnieDataGridView[0, communalnieDataGridView.Rows.Count - 1].Value = Profit.Service;
-                communalnieDataGridView[1, communalnieDataGridView.Rows.Count - 1].Value = Profit.Indications;
-                communalnieDataGridView[2, communalnieDataGridView.Rows.Count - 1].Value = Profit.Cost;
-                communalnieDataGridView[3, communalnieDataGridView.Rows.Count - 1].Value = Profit.Accruals;
+                ProfitForm ProfitForm = new ProfitForm();
+                ProfitForm.ShowDialog();
+                if (ProfitForm.Issave == true)
+                {
+                    SelHouse.TablesList[selectedTablesListIndex].ProfitsList.Add(new Profit(ProfitForm.Service, ProfitForm.Indications, ProfitForm.Unit, ProfitForm.Cost, ProfitForm.Accruals));
+                    communalnieDataGridView.Rows.Add();
+                    communalnieDataGridView[0, communalnieDataGridView.Rows.Count - 1].Value = ProfitForm.Service;
+                    communalnieDataGridView[1, communalnieDataGridView.Rows.Count - 1].Value = ProfitForm.Indications;
+                    communalnieDataGridView[2, communalnieDataGridView.Rows.Count - 1].Value = ProfitForm.Unit;
+                    communalnieDataGridView[3, communalnieDataGridView.Rows.Count - 1].Value = ProfitForm.Cost;
+                    communalnieDataGridView[4, communalnieDataGridView.Rows.Count - 1].Value = ProfitForm.Accruals;
+                }
+            }
+            else
+            {
+                MessageBox.Show("выберите дату");
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            //communalnieDataGridView.Rows.RemoveAt(communalnieDataGridView.CurrentRow.Index);
+            int index = communalnieDataGridView.CurrentRow.Index;
+            communalnieDataGridView.Rows.RemoveAt(index);
+            SelHouse.TablesList[selectedTablesListIndex].ProfitsList.RemoveAt(index);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -101,6 +112,7 @@ namespace Communalnie
         {
             monthComboBox.Items.Clear();
             monthComboBox.Enabled = true;
+            removeDateButton.Enabled = false;
             for (int i = 0; i < SelHouse.TablesList.Count; i++)
             {
                 if (SelHouse.TablesList[i].Year == Convert.ToInt32(yearComboBox.SelectedItem)) 
@@ -118,30 +130,46 @@ namespace Communalnie
 
         private void removeDateButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < SelHouse.TablesList.Count; i++)
+            int i = selectedTablesListIndex;
+            SelHouse.TablesList.RemoveAt(i);
+            if (monthComboBox.Items.Count > 1)
             {
-                if (SelHouse.TablesList[i].Year == uint.Parse(yearComboBox.SelectedItem.ToString()) && SelHouse.TablesList[i].Month == monthComboBox.SelectedItem.ToString())
-                {
-                    SelHouse.TablesList.RemoveAt(i);
-                    if (monthComboBox.Items.Count > 1)
-                    {
-                        monthComboBox.Items.RemoveAt(monthComboBox.SelectedIndex);
-                    }
-                    else
-                    {
-                        yearComboBox.Items.RemoveAt(yearComboBox.SelectedIndex);
-                        monthComboBox.SelectedIndex = -1;
-                        monthComboBox.Enabled = false;
-                    }
-                    removeDateButton.Enabled = false;
-                    break;
-                }
+                monthComboBox.Items.RemoveAt(monthComboBox.SelectedIndex);
             }
+            else
+            {
+                yearComboBox.Items.RemoveAt(yearComboBox.SelectedIndex);
+                monthComboBox.SelectedIndex = -1;
+                monthComboBox.Enabled = false;
+            }
+            communalnieDataGridView.Rows.Clear();
+            removeDateButton.Enabled = false;
         }
 
         private void monthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeDateButton.Enabled = true;
+            if (monthComboBox.SelectedIndex >= 0)
+            {
+                for (int i = 0; i < SelHouse.TablesList.Count; i++)
+                {
+                    if (SelHouse.TablesList[i].Year == uint.Parse(yearComboBox.SelectedItem.ToString()) && SelHouse.TablesList[i].Month == monthComboBox.SelectedItem.ToString())
+                    {
+                        selectedTablesListIndex = i;
+                        break;
+                    }
+                }
+                communalnieDataGridView.Rows.Clear();
+                for (int i = 0; i < SelHouse.TablesList[selectedTablesListIndex].ProfitsList.Count; i++)
+                {
+                    communalnieDataGridView.Rows.Add();
+                    communalnieDataGridView[0, communalnieDataGridView.Rows.Count - 1].Value = SelHouse.TablesList[selectedTablesListIndex].ProfitsList[i].Service;
+                    communalnieDataGridView[1, communalnieDataGridView.Rows.Count - 1].Value = SelHouse.TablesList[selectedTablesListIndex].ProfitsList[i].Indications;
+                    communalnieDataGridView[2, communalnieDataGridView.Rows.Count - 1].Value = SelHouse.TablesList[selectedTablesListIndex].ProfitsList[i].Unit;
+                    communalnieDataGridView[3, communalnieDataGridView.Rows.Count - 1].Value = SelHouse.TablesList[selectedTablesListIndex].ProfitsList[i].Cost;
+                    communalnieDataGridView[4, communalnieDataGridView.Rows.Count - 1].Value = SelHouse.TablesList[selectedTablesListIndex].ProfitsList[i].Accruals;
+                }
+            }
         }
     }
 }
