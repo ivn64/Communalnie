@@ -81,18 +81,19 @@ namespace Communalnie
         {
             DateAndMonthAddForm DAM = new DateAndMonthAddForm();
             DAM.ShowDialog();
-            bool isCoincidence = false;
+            bool isExist = false;
             if (DAM.isSave == true)
             {
                 for (int i = 0; i < SelHouse.TablesList.Count; i++)
                 {
                     if (DAM.Year == SelHouse.TablesList[i].Year && DAM.Month == SelHouse.TablesList[i].Month)
-                        isCoincidence = true;
+                        isExist = true;
                 }
-                if (isCoincidence == false)
+                if (isExist == false)
                 {
                     SelHouse.TablesList.Add(new ProfitTable(DAM.Year, DAM.Month));
                     SelHouse.TablesList = SelHouse.TablesList.OrderBy(s => DateTime.ParseExact(s.Month, "MMMM", new CultureInfo("ru-RU"))).ToList();
+                    SelHouse.TablesList = SelHouse.TablesList.OrderBy(x => x.Year).ToList();
                     bool test = false;
                     for (int i = 0; i < yearComboBox.Items.Count; i++)
                     {
