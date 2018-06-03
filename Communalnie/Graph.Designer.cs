@@ -117,7 +117,6 @@
             this.byMonthComboBox.Location = new System.Drawing.Point(136, 64);
             this.byMonthComboBox.Name = "byMonthComboBox";
             this.byMonthComboBox.Size = new System.Drawing.Size(141, 21);
-            this.byMonthComboBox.Sorted = true;
             this.byMonthComboBox.TabIndex = 76;
             // 
             // byYearComboBox
@@ -139,7 +138,6 @@
             this.fromMonthComboBox.Location = new System.Drawing.Point(136, 35);
             this.fromMonthComboBox.Name = "fromMonthComboBox";
             this.fromMonthComboBox.Size = new System.Drawing.Size(141, 21);
-            this.fromMonthComboBox.Sorted = true;
             this.fromMonthComboBox.TabIndex = 78;
             // 
             // fromYearComboBox

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Communalnie
 {
@@ -91,6 +92,7 @@ namespace Communalnie
                 if (isCoincidence == false)
                 {
                     SelHouse.TablesList.Add(new ProfitTable(DAM.Year, DAM.Month));
+                    SelHouse.TablesList = SelHouse.TablesList.OrderBy(s => DateTime.ParseExact(s.Month, "MMMM", new CultureInfo("ru-RU"))).ToList();
                     bool test = false;
                     for (int i = 0; i < yearComboBox.Items.Count; i++)
                     {

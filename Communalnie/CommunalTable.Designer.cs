@@ -182,7 +182,6 @@
             this.monthComboBox.Location = new System.Drawing.Point(148, 25);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(141, 21);
-            this.monthComboBox.Sorted = true;
             this.monthComboBox.TabIndex = 74;
             this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.monthComboBox_SelectedIndexChanged);
             // 

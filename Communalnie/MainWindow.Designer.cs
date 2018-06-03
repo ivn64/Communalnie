@@ -173,6 +173,7 @@
             this.yearComboBox.Location = new System.Drawing.Point(11, 73);
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(91, 21);
+            this.yearComboBox.Sorted = true;
             this.yearComboBox.TabIndex = 22;
             this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
