@@ -103,11 +103,13 @@
             // 
             // servicesComboBox
             // 
+            this.servicesComboBox.Enabled = false;
             this.servicesComboBox.FormattingEnabled = true;
             this.servicesComboBox.Location = new System.Drawing.Point(320, 35);
             this.servicesComboBox.Name = "servicesComboBox";
             this.servicesComboBox.Size = new System.Drawing.Size(178, 21);
             this.servicesComboBox.TabIndex = 42;
+            this.servicesComboBox.SelectedIndexChanged += new System.EventHandler(this.servicesComboBox_SelectedIndexChanged);
             // 
             // byMonthComboBox
             // 
@@ -118,10 +120,12 @@
             this.byMonthComboBox.Name = "byMonthComboBox";
             this.byMonthComboBox.Size = new System.Drawing.Size(141, 21);
             this.byMonthComboBox.TabIndex = 76;
+            this.byMonthComboBox.SelectedIndexChanged += new System.EventHandler(this.byMonthComboBox_SelectedIndexChanged);
             // 
             // byYearComboBox
             // 
             this.byYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.byYearComboBox.Enabled = false;
             this.byYearComboBox.FormattingEnabled = true;
             this.byYearComboBox.Location = new System.Drawing.Point(39, 64);
             this.byYearComboBox.Name = "byYearComboBox";
@@ -139,6 +143,7 @@
             this.fromMonthComboBox.Name = "fromMonthComboBox";
             this.fromMonthComboBox.Size = new System.Drawing.Size(141, 21);
             this.fromMonthComboBox.TabIndex = 78;
+            this.fromMonthComboBox.SelectedIndexChanged += new System.EventHandler(this.fromMonthComboBox_SelectedIndexChanged);
             // 
             // fromYearComboBox
             // 
