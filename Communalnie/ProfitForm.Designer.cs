@@ -128,8 +128,9 @@
             this.unitLabel.AutoSize = true;
             this.unitLabel.Location = new System.Drawing.Point(338, 89);
             this.unitLabel.Name = "unitLabel";
-            this.unitLabel.Size = new System.Drawing.Size(0, 13);
+            this.unitLabel.Size = new System.Drawing.Size(27, 13);
             this.unitLabel.TabIndex = 104;
+            this.unitLabel.Text = "руб.";
             // 
             // ProfitForm
             // 

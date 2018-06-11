@@ -43,9 +43,7 @@ namespace Communalnie
 
         private void graphPictureBox_Paint(object sender, PaintEventArgs e)
         {
-            int min = 0;
-            int max = 0;
-            List<ProfitTable> tempProfits = new List<ProfitTable>();
+            
 
             /*for (int i = fromIndex; i < byIndex; i++)
             {
@@ -59,13 +57,13 @@ namespace Communalnie
             }*/
 
 
-            Pen myPen = new Pen(Brushes.Green);
+            /*Pen myPen = new Pen(Brushes.Green);
             myPen.Width = 2.0F;
             Font legendFont = new Font("Arial", 10);
             e.Graphics.DrawString("0", legendFont, new SolidBrush(Color.Black), 0, 400);
             e.Graphics.DrawLine(myPen, 0, 400, 100, 100);
             e.Graphics.DrawLine(myPen, 100, 100, 150, 90);
-            myPen.Dispose();
+            myPen.Dispose();*/
         }
 
         private void fromYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,6 +149,49 @@ namespace Communalnie
 
         private void readingsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            float minValue = 0;
+            float maxValue = 0;
+            //int monthCount = 0;
+            List<String> monthList = new List<string>();
+
+
+            for (int i = fromIndex; i < byIndex; i++)
+            {
+                for (int j = 0; j < SelHouse.TablesList[i].ProfitsList.Count; j++)
+                    if (SelHouse.TablesList[i].ProfitsList[j].Service == servicesComboBox.SelectedItem.ToString())
+                    {
+                        if (minValue > SelHouse.TablesList[i].ProfitsList[j].Cost)
+                            minValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
+                        if (maxValue < SelHouse.TablesList[i].ProfitsList[j].Cost)
+                            maxValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
+                        monthList.Add(SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString());
+                    }
+
+
+
+
+                    //servicesComboBox.Items.Add(SelHouse.TablesList[i].ProfitsList[j].Service);
+            }
+
+
+
+
+
+            Graphics gr = graphPictureBox.CreateGraphics();
+            Graphics grText = graphPictureBox.CreateGraphics();
+
+
+            Pen myPen = new Pen(Brushes.Green);
+            myPen.Width = 2.0F;
+            Font legendFont = new Font("Arial", 10);
+            grText.TranslateTransform(-400, 420);
+            grText.RotateTransform(-90);
+            grText.DrawString("январь 2018", legendFont, new SolidBrush(Color.Black), 0, 400);
+            grText.TranslateTransform(0, 50);
+            grText.DrawString("февраль 2018", legendFont, new SolidBrush(Color.Black), 0, 400);
+            gr.DrawLine(myPen, 0, 400, 100, 100);
+            gr.DrawLine(myPen, 100, 100, 150, 90);
+            myPen.Dispose();
 
         }
     }

@@ -44,8 +44,8 @@ namespace Communalnie
             costTextBox.Text = DArr.GetItem(servicesComboBox.SelectedIndex).Price.ToString();
             Service = DArr.GetItem(servicesComboBox.SelectedIndex).Name;
             Cost = DArr.GetItem(servicesComboBox.SelectedIndex).Price;
-            Unit = DArr.GetItem(servicesComboBox.SelectedIndex).Unit;
-            unitLabel.Text = Unit;
+            //Unit = DArr.GetItem(servicesComboBox.SelectedIndex).Unit;
+            //unitLabel.Text = Unit;
         }
 
         private void indicationsTextBox_TextChanged(object sender, EventArgs e)
