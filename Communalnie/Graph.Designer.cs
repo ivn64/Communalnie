@@ -32,8 +32,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.readingsRadioButton = new System.Windows.Forms.RadioButton();
+            this.priceRadioButton = new System.Windows.Forms.RadioButton();
             this.servicesComboBox = new System.Windows.Forms.ComboBox();
             this.byMonthComboBox = new System.Windows.Forms.ComboBox();
             this.byYearComboBox = new System.Windows.Forms.ComboBox();
@@ -79,27 +79,28 @@
             this.label1.TabIndex = 45;
             this.label1.Text = "Период";
             // 
-            // radioButton2
+            // readingsRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(320, 65);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(79, 17);
-            this.radioButton2.TabIndex = 44;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "показания";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.readingsRadioButton.AutoSize = true;
+            this.readingsRadioButton.Location = new System.Drawing.Point(320, 65);
+            this.readingsRadioButton.Name = "readingsRadioButton";
+            this.readingsRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.readingsRadioButton.TabIndex = 44;
+            this.readingsRadioButton.TabStop = true;
+            this.readingsRadioButton.Text = "показания";
+            this.readingsRadioButton.UseVisualStyleBackColor = true;
+            this.readingsRadioButton.CheckedChanged += new System.EventHandler(this.readingsRadioButton_CheckedChanged);
             // 
-            // radioButton1
+            // priceRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(405, 66);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(79, 17);
-            this.radioButton1.TabIndex = 43;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "стоимость";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.priceRadioButton.AutoSize = true;
+            this.priceRadioButton.Location = new System.Drawing.Point(405, 66);
+            this.priceRadioButton.Name = "priceRadioButton";
+            this.priceRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.priceRadioButton.TabIndex = 43;
+            this.priceRadioButton.TabStop = true;
+            this.priceRadioButton.Text = "стоимость";
+            this.priceRadioButton.UseVisualStyleBackColor = true;
             // 
             // servicesComboBox
             // 
@@ -180,8 +181,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.readingsRadioButton);
+            this.Controls.Add(this.priceRadioButton);
             this.Controls.Add(this.servicesComboBox);
             this.Name = "Graph";
             this.Text = "Graph";
@@ -198,8 +199,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton readingsRadioButton;
+        private System.Windows.Forms.RadioButton priceRadioButton;
         private System.Windows.Forms.ComboBox servicesComboBox;
         private System.Windows.Forms.ComboBox byMonthComboBox;
         private System.Windows.Forms.ComboBox byYearComboBox;

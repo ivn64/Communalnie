@@ -43,6 +43,22 @@ namespace Communalnie
 
         private void graphPictureBox_Paint(object sender, PaintEventArgs e)
         {
+            int min = 0;
+            int max = 0;
+            List<ProfitTable> tempProfits = new List<ProfitTable>();
+
+            /*for (int i = fromIndex; i < byIndex; i++)
+            {
+                for (int j = 0; j < SelHouse.TablesList[i].ProfitsList.Count; j++)
+                    if (SelHouse.TablesList[i].ProfitsList[j].Service == servicesComboBox.SelectedItem.ToString())
+                    {
+                        tempProfits.Add(SelHouse.TablesList[i]);
+                    }
+
+                   // servicesComboBox.Items.Add(SelHouse.TablesList[i].ProfitsList[j].Service);
+            }*/
+
+
             Pen myPen = new Pen(Brushes.Green);
             myPen.Width = 2.0F;
             Font legendFont = new Font("Arial", 10);
@@ -56,6 +72,7 @@ namespace Communalnie
         {
             servicesComboBox.Enabled = false;
             byYearComboBox.Enabled = false;
+            byMonthComboBox.Enabled = false;
             fromMonthComboBox.Items.Clear();
             fromMonthComboBox.Enabled = true;
             for (int i = 0; i < SelHouse.TablesList.Count; i++)
@@ -79,6 +96,8 @@ namespace Communalnie
                     byMonthComboBox.Items.Add(SelHouse.TablesList[i].Month);
                 }
             }
+            if (byMonthComboBox.Items.Count == 0)
+                byMonthComboBox.Items.Add(SelHouse.TablesList[SelHouse.TablesList.Count - 1].Month);
         }
 
         private void fromMonthComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +105,7 @@ namespace Communalnie
             servicesComboBox.Enabled = false;
             byYearComboBox.Items.Clear();
             byYearComboBox.Enabled = true;
+            byMonthComboBox.Enabled = false;
 
             for (int i = 0; i < SelHouse.TablesList.Count; i++)
             {
@@ -122,8 +142,14 @@ namespace Communalnie
                     servicesComboBox.Items.Add(SelHouse.TablesList[i].ProfitsList[j].Service);
             }
         }
-
+        
         private void servicesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            readingsRadioButton.Checked = false;
+            priceRadioButton.Checked = false;
+        }
+
+        private void readingsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
