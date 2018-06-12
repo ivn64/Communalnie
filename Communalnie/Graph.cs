@@ -149,60 +149,52 @@ namespace Communalnie
 
         private void readingsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            float minValue = 0;
-            float maxValue = 0;
-            //int monthCount = 0;
+            float minValue = 5000;
+            float maxValue = -5000;
             List<String> monthList = new List<string>();
-
+            Dictionary<string, float> monthesDict = new Dictionary<string, float>();
 
             for (int i = fromIndex; i < byIndex; i++)
             {
                 for (int j = 0; j < SelHouse.TablesList[i].ProfitsList.Count; j++)
                     if (SelHouse.TablesList[i].ProfitsList[j].Service == servicesComboBox.SelectedItem.ToString())
                     {
-                        if (minValue > SelHouse.TablesList[i].ProfitsList[j].Cost)
-                            minValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
-                        if (maxValue < SelHouse.TablesList[i].ProfitsList[j].Cost)
-                            maxValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
-                        monthList.Add(SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString().Substring(2, 2));
+                        if (minValue > SelHouse.TablesList[i].ProfitsList[j].Indications)
+                            minValue = SelHouse.TablesList[i].ProfitsList[j].Indications;
+                        if (maxValue < SelHouse.TablesList[i].ProfitsList[j].Indications)
+                            maxValue = SelHouse.TablesList[i].ProfitsList[j].Indications;
+                        string temp = SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString().Substring(2, 2);
+                        monthList.Add(temp);
+                        monthesDict.Add(temp, SelHouse.TablesList[i].ProfitsList[j].Indications);
                     }
+            }
 
-
-
-
-                    //servicesComboBox.Items.Add(SelHouse.TablesList[i].ProfitsList[j].Service);
+            Graphics grMonthText = graphPictureBox.CreateGraphics();
+            Font legendFont = new Font("Arial", 10);
+            grMonthText.TranslateTransform(-370, 420);
+            grMonthText.RotateTransform(-90);
+            for (int i = 0; i < monthList.Count(); i++)
+            {
+                grMonthText.DrawString(monthList[i], legendFont, new SolidBrush(Color.Black), 0, 400);
+                grMonthText.TranslateTransform(0, 470 / (monthList.Count() - 1));
             }
 
 
+            Graphics grValue = graphPictureBox.CreateGraphics();
+            grValue.DrawString(minValue.ToString(), legendFont, new SolidBrush(Color.Black), 0, 360);
+            for (int i = 1; i < 5; i++)
+            {
+                float t = ((maxValue - minValue) / 5) * i + minValue;
+                grValue.DrawString(t.ToString(), legendFont, new SolidBrush(Color.Black), 0, 360 - (360 / 5 * i));
+            }
+            grValue.DrawString(maxValue.ToString(), legendFont, new SolidBrush(Color.Black), 0, 0);
 
 
 
             Graphics gr = graphPictureBox.CreateGraphics();
-            Graphics grText = graphPictureBox.CreateGraphics();
-
-
             Pen myPen = new Pen(Brushes.Green);
             myPen.Width = 2.0F;
-            Font legendFont = new Font("Arial", 10);
-            grText.TranslateTransform(-400, 420);
-            grText.RotateTransform(-90);
-            for (int i = 0; i < monthList.Count(); i++)
-            {
-                grText.TranslateTransform(0, i * 50);
-
-                grText.DrawString(monthList[i], legendFont, new SolidBrush(Color.Black), 0, 400);
-            }
-
-
-
-
-
-            /*grText.TranslateTransform(-400, 420);
-            grText.RotateTransform(-90);
-            grText.DrawString(monthList[0], legendFont, new SolidBrush(Color.Black), 0, 400);
-            grText.TranslateTransform(0, 50);
-            grText.DrawString(monthList[1], legendFont, new SolidBrush(Color.Black), 0, 400);*/
-            gr.DrawLine(myPen, 0, 400, 100, 100);
+            gr.DrawLine(myPen, 35, 370, 100, 100);
             gr.DrawLine(myPen, 100, 100, 150, 90);
             myPen.Dispose();
 
