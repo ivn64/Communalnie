@@ -152,7 +152,7 @@ namespace Communalnie
             float minValue = 5000;
             float maxValue = -5000;
             List<String> monthList = new List<string>();
-            Dictionary<string, float> monthesDict = new Dictionary<string, float>();
+            List<float> valueList = new List<float>();
 
             for (int i = fromIndex; i < byIndex; i++)
             {
@@ -165,7 +165,7 @@ namespace Communalnie
                             maxValue = SelHouse.TablesList[i].ProfitsList[j].Indications;
                         string temp = SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString().Substring(2, 2);
                         monthList.Add(temp);
-                        monthesDict.Add(temp, SelHouse.TablesList[i].ProfitsList[j].Indications);
+                        valueList.Add(SelHouse.TablesList[i].ProfitsList[j].Indications);
                     }
             }
 
@@ -191,11 +191,28 @@ namespace Communalnie
 
 
 
+
+
             Graphics gr = graphPictureBox.CreateGraphics();
             Pen myPen = new Pen(Brushes.Green);
             myPen.Width = 2.0F;
-            gr.DrawLine(myPen, 35, 370, 100, 100);
-            gr.DrawLine(myPen, 100, 100, 150, 90);
+            List<float> x = new List<float>();
+            List<float> y = new List<float>();
+
+            for (int i = 0; i < monthList.Count(); i++)
+            {
+                x.Add(35 + (485 / (monthList.Count() - 1)) * i);
+                y.Add(370 - (370 - 0) * (valueList[i] - minValue) / (maxValue - minValue));
+            }
+
+            for (int i = 0; i < monthList.Count() - 1; i++)
+            {
+                gr.DrawLine(myPen, x[i], y[i], x[i + 1], y[i + 1]);
+            }
+
+
+            /*gr.DrawLine(myPen, 35, 370, 100, 100);
+            gr.DrawLine(myPen, 100, 100, 150, 90);*/
             myPen.Dispose();
 
         }
