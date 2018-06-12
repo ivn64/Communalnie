@@ -164,7 +164,7 @@ namespace Communalnie
                             minValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
                         if (maxValue < SelHouse.TablesList[i].ProfitsList[j].Cost)
                             maxValue = SelHouse.TablesList[i].ProfitsList[j].Cost;
-                        monthList.Add(SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString());
+                        monthList.Add(SelHouse.TablesList[i].Month.Substring(0, 3) + " " + SelHouse.TablesList[i].Year.ToString().Substring(2, 2));
                     }
 
 
@@ -186,9 +186,22 @@ namespace Communalnie
             Font legendFont = new Font("Arial", 10);
             grText.TranslateTransform(-400, 420);
             grText.RotateTransform(-90);
-            grText.DrawString("январь 2018", legendFont, new SolidBrush(Color.Black), 0, 400);
+            for (int i = 0; i < monthList.Count(); i++)
+            {
+                grText.TranslateTransform(0, i * 50);
+
+                grText.DrawString(monthList[i], legendFont, new SolidBrush(Color.Black), 0, 400);
+            }
+
+
+
+
+
+            /*grText.TranslateTransform(-400, 420);
+            grText.RotateTransform(-90);
+            grText.DrawString(monthList[0], legendFont, new SolidBrush(Color.Black), 0, 400);
             grText.TranslateTransform(0, 50);
-            grText.DrawString("февраль 2018", legendFont, new SolidBrush(Color.Black), 0, 400);
+            grText.DrawString(monthList[1], legendFont, new SolidBrush(Color.Black), 0, 400);*/
             gr.DrawLine(myPen, 0, 400, 100, 100);
             gr.DrawLine(myPen, 100, 100, 150, 90);
             myPen.Dispose();
